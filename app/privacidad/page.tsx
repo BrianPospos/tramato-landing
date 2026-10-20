@@ -1,37 +1,26 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Política de privacidad — Tramato</title>
-  <meta name="description" content="Qué datos usa Tramato, dónde se guardan y qué controlás vos. Tramato no tiene servidores, cuentas ni analítica.">
-  <meta name="theme-color" content="#0b0b0c">
-  <link rel="icon" href="assets/tramato-symbol-on-dark.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <nav class="nav">
-    <div class="wrap">
-      <a class="logo" href="./" aria-label="Tramato, inicio"><img src="assets/tramato-lockup-on-dark.svg" alt="Tramato"></a>
-      <div class="links"><a href="./">Inicio</a></div>
-    </div>
-  </nav>
+import type { Metadata } from "next";
+import { CONTACT_URL, Footer, Nav } from "@/components/site";
 
-  <main class="doc">
+export const metadata: Metadata = {
+  title: "Política de privacidad — Tramato",
+  description: "Qué datos usa Tramato, dónde se guardan y qué controlás vos. Tramato no tiene servidores, cuentas ni analítica.",
+};
+
+export default function Privacidad() {
+  return (
+    <>
+      <Nav />
+      <main className="doc">
     <h1>Política de privacidad</h1>
-    <p class="updated">Última actualización: 20 de octubre de 2026</p>
+    <p className="updated">Última actualización: 20 de octubre de 2026</p>
 
-    <div class="summary">
+    <div className="summary">
       <p><strong>En resumen:</strong> Tramato funciona entero en tu iPhone. No tiene servidores, cuentas, analítica ni publicidad, y no recibimos ningún dato tuyo.</p>
       <p>Los datos de salud se usan solo para mostrarte tus carreras. No se venden, no se comparten con terceros y no se usan para publicidad.</p>
     </div>
 
     <h2>Quién es responsable</h2>
-    <p>Tramato es una app para iPhone desarrollada por Brian Pospos (Argentina). Si tenés preguntas sobre esta política, escribinos a través de la <a href="https://github.com/BrianPospos/tramato-landing/issues">página de contacto</a>.</p>
+    <p>Tramato es una app para iPhone desarrollada por Brian Pospos (Argentina). Si tenés preguntas sobre esta política, escribinos a través de la <a href={CONTACT_URL}>página de contacto</a>.</p>
 
     <h2>Qué datos usa la app</h2>
     <p>Con tu permiso, Tramato <strong>lee de Apple Salud</strong>:</p>
@@ -85,12 +74,7 @@
     <h2>Cambios en esta política</h2>
     <p>Si cambiamos cómo la app usa los datos, vamos a actualizar esta página y la fecha de arriba antes de publicar esa versión de la app.</p>
   </main>
-
-  <footer>
-    <div class="wrap">
-      <span>© 2026 Tramato</span>
-      <span><a href="./">Inicio</a> · <a href="https://github.com/BrianPospos/tramato-landing/issues">Contacto</a></span>
-    </div>
-  </footer>
-</body>
-</html>
+      <Footer />
+    </>
+  );
+}

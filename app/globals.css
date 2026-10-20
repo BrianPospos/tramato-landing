@@ -1,3 +1,19 @@
+@import "tailwindcss";
+
+/* Tokens del kit de marca, también como utilidades de Tailwind (bg-bg, text-accent, font-mono…). */
+@theme {
+  --color-bg: #0b0b0c;
+  --color-surface: #151517;
+  --color-surface-2: #1c1c1f;
+  --color-separator: #2a2a2f;
+  --color-text: #f4f4f5;
+  --color-text-2: #a1a1a8;
+  --color-text-3: #6b6b73;
+  --color-accent: #c6ff3d;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
 /* Tramato — landing y política de privacidad. Colores y tipografía del kit de marca. */
 
 :root {
@@ -13,8 +29,8 @@
   --accent-border: rgba(198, 255, 61, 0.32);
   --radius: 20px;
   --max: 1120px;
-  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -151,8 +167,9 @@ footer a { color: var(--text-2); }
 .doc .updated { font-family: var(--mono); font-size: 13px; color: var(--text-3); }
 .doc h2 { font-size: 22px; letter-spacing: -0.01em; margin: 40px 0 10px; }
 .doc p, .doc li { color: var(--text-2); }
+.doc p { margin: 0 0 14px; }
 .doc strong { color: var(--text); }
-.doc ul { padding-left: 20px; }
+.doc ul { padding-left: 20px; list-style: disc; }
 .doc li { margin: 6px 0; }
 .doc .summary {
   background: var(--surface); border: 1px solid #1f1f23; border-radius: var(--radius);
