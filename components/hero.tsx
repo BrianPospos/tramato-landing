@@ -19,8 +19,8 @@ export function Hero() {
           <WaitlistForm heading="Sumate a la lista de espera" />
         </div>
         <div className="phones" aria-hidden="true">
-          <Image className="p1" src="/assets/screen1.png" alt="" width={521} height={1100} priority sizes="(max-width: 900px) 240px, 300px" />
-          <Image className="p2" src="/assets/screen2.png" alt="" width={521} height={1100} priority sizes="(max-width: 900px) 240px, 300px" />
+          <Image className="p1" src="/assets/screen-history.png" alt="" width={600} height={1305} priority sizes="(max-width: 900px) 240px, 300px" />
+          <Image className="p2" src="/assets/screen-detail.png" alt="" width={600} height={1305} priority sizes="(max-width: 900px) 240px, 300px" />
         </div>
       </div>
     </header>

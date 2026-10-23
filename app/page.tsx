@@ -1,5 +1,5 @@
 import { Faq } from "@/components/faq";
-import { AiSection, ExportSection, Extras, Features } from "@/components/features";
+import { AiSection, ExportSection, Extras, Features, PrivacySection } from "@/components/features";
 import { FinalCta } from "@/components/final-cta";
 import { Hero } from "@/components/hero";
 import { Footer, Nav } from "@/components/site";
@@ -28,6 +28,7 @@ export default function Home() {
         <AiSection />
         <ExportSection />
         <Extras />
+        <PrivacySection />
         <Faq />
         <FinalCta />
       </main>

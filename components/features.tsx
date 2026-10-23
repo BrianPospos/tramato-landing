@@ -1,19 +1,20 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import {
   BookOpenText,
+  DatabaseBackup,
   CalendarCheck,
   FileUp,
   Mic,
   Share2,
-  TrendingUp,
   Radio,
 } from "lucide-react";
 
 function Phone({ src, alt }: { src: string; alt: string }) {
   return (
     <figure className="shot">
-      <Image src={src} alt={alt} width={521} height={1100} sizes="(max-width: 900px) 70vw, 340px" />
+      <Image src={src} alt={alt} width={600} height={1305} sizes="(max-width: 900px) 70vw, 340px" />
     </figure>
   );
 }
@@ -92,8 +93,9 @@ export function Features() {
           "El origen de cada carrera: Strava, Apple Watch, Garmin, lo que sea",
           "Detección de duplicados",
           "Resumen semanal con km, tiempo y cantidad de carreras",
+          "Aviso cuando subís la carga demasiado rápido",
         ]}
-        shot={{ src: "/assets/screen1.png", alt: "Historial de carreras con el resumen de la semana" }}
+        shot={{ src: "/assets/screen-history.png", alt: "Historial de carreras con el resumen de la semana" }}
       />
 
       <Showcase
@@ -107,7 +109,7 @@ export function Features() {
           "Mejores tramos, con récords",
           "Comparación de dos carreras km a km",
         ]}
-        shot={{ src: "/assets/screen2.png", alt: "Detalle de una carrera con mapa, métricas y parciales por kilómetro" }}
+        shot={{ src: "/assets/screen-detail.png", alt: "Detalle de una carrera con mapa, métricas y parciales por kilómetro" }}
         reverse
       />
 
@@ -144,7 +146,8 @@ export function Features() {
               <ul className="ticks">
                 <li>iPhone: Live Activity y Dynamic Island</li>
                 <li>Android: notificación con controles</li>
-                <li>Avisos de voz configurables</li>
+                <li>Avisos de voz por distancia o por tiempo</li>
+                <li>Se guarda aunque no des permiso a Salud</li>
               </ul>
             </article>
             <article className="card card-lg">
@@ -152,32 +155,28 @@ export function Features() {
               <h3>Entrenamientos guiados por voz</h3>
               <p>Armá series con ritmo objetivo. Una voz te va marcando cada paso.</p>
               <ul className="ticks">
-                <li>Series con ritmo objetivo</li>
-                <li>Te avisa si vas rápido o lento</li>
+                <li>Calentamiento, series por distancia o tiempo, pausas y enfriamiento</li>
+                <li>Te avisa antes de cada cambio y si vas rápido o lento</li>
+                <li>El paso actual, también en la pantalla bloqueada</li>
               </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section className="section-tight" aria-labelledby="tendencias-title">
-        <div className="wrap">
-          <div className="band band-surface">
-            <div className="icon icon-lg" aria-hidden="true"><TrendingUp size={24} /></div>
-            <div>
-              <div className="kicker">Gratis</div>
-              <h2 className="band-title" id="tendencias-title">Tendencias para ver cómo venís</h2>
-              <p>Las tendencias son gratis. Con tu historial, Tramato te muestra:</p>
-              <ul className="ticks ticks-cols">
-                <li>Volumen y ritmo</li>
-                <li>Mejores marcas en 1K, 5K, 10K, media y maratón</li>
-                <li>Carga de entrenamiento, con alerta</li>
-                <li>Calendario de carreras</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Showcase
+        kicker="Tendencias · gratis"
+        title="Tendencias para ver cómo venís"
+        lead="Con tu historial, Tramato te muestra cómo evolucionás, sin suscripción."
+        points={[
+          "Volumen semanal y ritmo medio",
+          "Mejores marcas en 1K, 5K, 10K, media y maratón",
+          "Carga de entrenamiento (agudo:crónico), con alerta",
+          "Calendario de carreras",
+        ]}
+        shot={{ src: "/assets/screen-trends.png", alt: "Tendencias con mejores marcas, carga de entrenamiento y volumen semanal" }}
+        reverse
+      />
     </div>
   );
 }
@@ -191,11 +190,12 @@ export function AiSection() {
       lead="Con un toque, Tramato arma un resumen de tu carrera y de tus últimas semanas, listo para pegar en el asistente que uses."
       extra={<AssistantPicker />}
       points={[
-        "Plantillas para analizar una carrera o armar el plan de la semana",
+        "Plantillas para analizar una carrera, armar el plan de la semana o prevenir lesiones",
+        "Suma tus últimas 6 semanas, tu perfil, tus notas y cómo te sentiste",
         "El resumen no incluye coordenadas GPS",
         "Lo pegás vos: Tramato no manda nada por su cuenta",
       ]}
-      shot={{ src: "/assets/screen3.png", alt: "Pantalla Copiar para IA con plantillas y vista previa del resumen" }}
+      shot={{ src: "/assets/screen-copy.png", alt: "Pantalla Copiar para IA con plantillas y vista previa del resumen" }}
     />
   );
 }
@@ -211,8 +211,9 @@ export function ExportSection() {
         "El historial, con una fila por carrera",
         "Los parciales km a km",
         "La serie completa, segundo a segundo",
+        "Con el rango de fechas que elijas",
       ]}
-      shot={{ src: "/assets/screen4.png", alt: "Pantalla Exportar con nivel de detalle, rango de fechas y formato CSV o Excel" }}
+      shot={{ src: "/assets/screen-export.png", alt: "Pantalla Exportar con nivel de detalle, rango de fechas y formato CSV o Excel" }}
       reverse
     />
   );
@@ -222,7 +223,7 @@ const extras = [
   {
     icon: BookOpenText,
     title: "Diario",
-    text: "Anotá una nota y cómo te sentiste en cada carrera, y llevá los km de cada par de zapatillas.",
+    text: "Ponele nombre, una nota y cómo te sentiste a cada carrera, y llevá los km de cada par de zapatillas con aviso de recambio.",
   },
   {
     icon: CalendarCheck,
@@ -232,9 +233,46 @@ const extras = [
   {
     icon: Share2,
     title: "Para tus historias",
-    text: "Armá una imagen de tu carrera para compartir, en tres estilos.",
+    text: "Armá una imagen con distancia, tiempo, ritmo y el dibujo del recorrido: tarjeta, fondo transparente o con el mapa.",
+  },
+  {
+    icon: DatabaseBackup,
+    title: "Copia de seguridad",
+    text: "Guardá en un archivo tus notas, zapatillas, objetivo, importaciones y entrenamientos, y restaurálos en otro teléfono.",
   },
 ];
+
+const privacyPoints = [
+  "Sin cuentas ni inicio de sesión",
+  "Sin analítica, rastreo ni publicidad dentro de la app",
+  "Todo se calcula en tu teléfono",
+  "“Copiar para IA” nunca incluye coordenadas GPS",
+  "Podés borrar todo desde Ajustes en un toque",
+];
+
+export function PrivacySection() {
+  return (
+    <section id="privacidad" className="section-tight" aria-labelledby="privacidad-title">
+      <div className="wrap">
+        <div className="privacy-band">
+          <div>
+            <div className="kicker">Privacidad</div>
+            <h2 className="section-title" id="privacidad-title">Tus carreras no salen de tu teléfono</h2>
+            <p className="section-lead">
+              La app no tiene servidores. Tus datos solo salen si vos exportás, copiás o compartís algo.
+            </p>
+            <Link href="/privacidad">Leer la política de privacidad →</Link>
+          </div>
+          <ul>
+            {privacyPoints.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function Extras() {
   return (
