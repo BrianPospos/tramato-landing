@@ -39,13 +39,11 @@ export type SaveResult = "created" | "duplicate" | "unavailable" | "failed";
 
 /**
  * Guarda el registro en la tabla `waitlist` de Supabase usando su API REST (PostgREST),
- * sin dependencias extra. Corre solo en el servidor con la clave de servicio, así la tabla
- * queda cerrada para el navegador (RLS activo y sin políticas para anon). Un email repetido
- * se trata como éxito, para que nadie pueda averiguar qué emails ya están anotados.
+ * sin dependencias extra. La tabla tiene `email` único, así que un duplicado se ignora.
  */
 export async function saveSignup({ email, platform, currentApp }: Signup): Promise<SaveResult> {
   const baseUrl = (process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL)?.replace(/\/+$/, "");
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SECRET_KEY;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!baseUrl || !serviceKey) {
     console.error("[waitlist] Faltan SUPABASE_URL y/o SUPABASE_SERVICE_ROLE_KEY. Ver README.");
@@ -53,27 +51,26 @@ export async function saveSignup({ email, platform, currentApp }: Signup): Promi
   }
 
   try {
-    const response = await fetch(`${baseUrl}/rest/v1/waitlist`, {
+    const response = await fetch(`${baseUrl}/rest/v1/waitlist?on_conflict=email`, {
       method: "POST",
       headers: {
         apikey: serviceKey,
         Authorization: `Bearer ${serviceKey}`,
         "Content-Type": "application/json",
-        Prefer: "return=minimal",
+        Prefer: "resolution=ignore-duplicates,return=representation",
       },
       body: JSON.stringify({ email, platform, current_app: currentApp }),
       cache: "no-store",
       signal: AbortSignal.timeout(8000),
     });
 
-    if (response.status === 409) return "created";
-
     if (!response.ok) {
       console.error("[waitlist] Supabase respondió", response.status, await response.text());
       return "failed";
     }
 
-    return "created";
+    const inserted: unknown = await response.json();
+    return Array.isArray(inserted) && inserted.length === 0 ? "duplicate" : "created";
   } catch (error) {
     console.error("[waitlist] Error al guardar el registro:", error);
     return "failed";
