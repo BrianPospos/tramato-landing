@@ -8,7 +8,6 @@ import {
   FileUp,
   Mic,
   Share2,
-  Radio,
 } from "lucide-react";
 
 function Phone({ src, alt }: { src: string; alt: string }) {
@@ -86,6 +85,37 @@ export function Features() {
   return (
     <div id="funciones">
       <Showcase
+        id="grabar"
+        kicker="Para salir a correr"
+        title="Grabá con el teléfono"
+        lead="Si no tenés reloj, o salís sin él, el teléfono alcanza. Funciona con la pantalla bloqueada y pausa solo cuando frenás."
+        points={[
+          "iPhone: Live Activity y Dynamic Island",
+          "Android: notificación con controles",
+          "Avisos de voz por distancia o por tiempo",
+          "Se guarda aunque no des permiso a Salud",
+        ]}
+        shot={{ src: "/assets/screen-record.png", alt: "Grabar una carrera con pausa automática y avisos de voz" }}
+      />
+
+      <section className="band-section" aria-labelledby="guiados-title">
+        <div className="wrap">
+          <div className="band band-surface">
+            <div className="icon icon-lg" aria-hidden="true"><Mic size={24} /></div>
+            <div>
+              <h2 className="band-title" id="guiados-title">Entrenamientos guiados por voz</h2>
+              <p>Armá series con ritmo objetivo. Una voz te va marcando cada paso.</p>
+              <ul className="ticks ticks-cols">
+                <li>Calentamiento, series por distancia o tiempo, pausas y enfriamiento</li>
+                <li>Te avisa antes de cada cambio y si vas rápido o lento</li>
+                <li>El paso actual, también en la pantalla bloqueada</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Showcase
         kicker="Historial"
         title="Todas tus carreras, juntas"
         lead="Cada carrera muestra de qué app viene. Si una misma salida aparece dos veces, Tramato lo detecta, y cada semana te arma el resumen."
@@ -96,6 +126,7 @@ export function Features() {
           "Aviso cuando subís la carga demasiado rápido",
         ]}
         shot={{ src: "/assets/screen-history.png", alt: "Historial de carreras con el resumen de la semana" }}
+        reverse
       />
 
       <Showcase
@@ -110,7 +141,6 @@ export function Features() {
           "Comparación de dos carreras km a km",
         ]}
         shot={{ src: "/assets/screen-detail.png", alt: "Detalle de una carrera con mapa, métricas y parciales por kilómetro" }}
-        reverse
       />
 
       <section className="band-section" aria-labelledby="strava-title">
@@ -133,36 +163,6 @@ export function Features() {
         </div>
       </section>
 
-      <section className="section-tight" aria-labelledby="grabar-title">
-        <div className="wrap">
-          <div className="kicker">Para salir a correr</div>
-          <h2 className="section-title" id="grabar-title">Grabá y entrená con el teléfono</h2>
-          <p className="section-lead">Si no tenés reloj, o salís sin él, el teléfono alcanza.</p>
-          <div className="duo">
-            <article className="card card-lg">
-              <div className="icon" aria-hidden="true"><Radio size={20} /></div>
-              <h3>Grabá con el GPS</h3>
-              <p>Funciona con la pantalla bloqueada y pausa solo cuando frenás.</p>
-              <ul className="ticks">
-                <li>iPhone: Live Activity y Dynamic Island</li>
-                <li>Android: notificación con controles</li>
-                <li>Avisos de voz por distancia o por tiempo</li>
-                <li>Se guarda aunque no des permiso a Salud</li>
-              </ul>
-            </article>
-            <article className="card card-lg">
-              <div className="icon" aria-hidden="true"><Mic size={20} /></div>
-              <h3>Entrenamientos guiados por voz</h3>
-              <p>Armá series con ritmo objetivo. Una voz te va marcando cada paso.</p>
-              <ul className="ticks">
-                <li>Calentamiento, series por distancia o tiempo, pausas y enfriamiento</li>
-                <li>Te avisa antes de cada cambio y si vas rápido o lento</li>
-                <li>El paso actual, también en la pantalla bloqueada</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
 
       <Showcase
         kicker="Tendencias · gratis"
