@@ -5,23 +5,33 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-inter" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["500", "700"], variable: "--font-jetbrains" });
 
+const SITE_URL = "https://tramato.vercel.app";
+const TITLE = "Tramato — Todas tus carreras en un solo lugar, y explicadas";
+const DESCRIPTION =
+  "Tramato junta tus carreras de Strava, Apple Watch, Garmin y más, las explica km a km y graba con el GPS del teléfono. Beta en TestFlight para iPhone, Android en camino. Sumate a la lista de espera.";
+
 export const metadata: Metadata = {
-  title: "Tramato — Tus carreras, entendidas",
-  description:
-    "App de iPhone para corredores: lee tus carreras de Apple Salud (Strava, Apple Watch, Garmin, Nike Run Club), te muestra parciales, mejores marcas y carga, graba con el GPS y arma un resumen para ChatGPT o Claude. Tus datos no salen del iPhone.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
   icons: { icon: "/assets/tramato-symbol-on-dark.svg", apple: "/assets/apple-touch-icon.png" },
   openGraph: {
-    title: "Tramato — Tus carreras, entendidas",
-    description: "Parciales, mejores marcas, entrenamientos guiados y un resumen listo para la IA. Sin cuentas ni servidores.",
-    images: ["/assets/app-icon.png"],
+    type: "website",
+    url: SITE_URL,
+    siteName: "Tramato",
+    locale: "es_AR",
+    title: TITLE,
+    description: DESCRIPTION,
   },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
-export const viewport: Viewport = { themeColor: "#0b0b0c" };
+export const viewport: Viewport = { themeColor: "#0b0b0c", colorScheme: "dark" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} ${jetbrains.variable}`}>
+    <html lang="es-AR" className={`${inter.variable} ${jetbrains.variable} bg-bg`}>
       <body>{children}</body>
     </html>
   );

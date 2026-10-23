@@ -3,7 +3,7 @@ import { CONTACT_URL, Footer, Nav } from "@/components/site";
 
 export const metadata: Metadata = {
   title: "Política de privacidad — Tramato",
-  description: "Qué datos usa Tramato, dónde se guardan y qué controlás vos. Tramato no tiene servidores, cuentas ni analítica.",
+  description: "Qué datos usa Tramato, dónde se guardan y qué controlás vos. La app no tiene servidores, cuentas ni analítica. Acá también explicamos cómo usamos el email de la lista de espera.",
 };
 
 export default function Privacidad() {
@@ -15,7 +15,7 @@ export default function Privacidad() {
     <p className="updated">Última actualización: 20 de octubre de 2026</p>
 
     <div className="summary">
-      <p><strong>En resumen:</strong> Tramato funciona entero en tu iPhone. No tiene servidores, cuentas, analítica ni publicidad, y no recibimos ningún dato tuyo.</p>
+      <p><strong>En resumen:</strong> la app Tramato funciona entera en tu iPhone. No tiene servidores, cuentas, analítica ni publicidad, y no recibimos ningún dato de la app. El único dato que recibimos es tu email, si te anotás en la lista de espera de este sitio.</p>
       <p>Los datos de salud se usan solo para mostrarte tus carreras. No se venden, no se comparten con terceros y no se usan para publicidad.</p>
     </div>
 
@@ -46,7 +46,7 @@ export default function Privacidad() {
         <tr><td>Resumen para el widget</td><td>En un espacio compartido entre la app y su widget, dentro de tu iPhone.</td></tr>
       </tbody>
     </table>
-    <p>Tramato no tiene servidores propios: nada de esto se envía a nosotros ni a terceros.</p>
+    <p>La app no tiene servidores propios: nada de esto se envía a nosotros ni a terceros.</p>
 
     <h2>Cuándo salen datos del iPhone</h2>
     <p>Solo cuando vos lo hacés, y solo a donde vos elijas:</p>
@@ -67,6 +67,11 @@ export default function Privacidad() {
       <li>Las carreras grabadas con Tramato se pueden borrar de Salud desde su detalle. Las de otras apps solo se pueden ocultar en Tramato: para borrarlas, usá la app que las registró o la app Salud.</li>
       <li>Al desinstalar la app se elimina todo lo que guardaba en el iPhone.</li>
     </ul>
+
+    <h2 id="lista-de-espera">Lista de espera (este sitio)</h2>
+    <p>Si te sumás a la lista de espera de este sitio, guardamos los datos que cargás en el formulario: tu <strong>email</strong>, si usás <strong>iPhone o Android</strong> y, si querés contarlo, <strong>con qué app registrás hoy tus carreras</strong>. También guardamos la fecha en que te anotaste.</p>
+    <p>Los usamos solo para avisarte sobre la beta de Tramato y sobre la llegada de la versión de Android. No los vendemos, no los usamos para publicidad y no los compartimos con terceros, salvo con el proveedor que aloja la base de datos del sitio. Esto es independiente de la app: la app no envía datos a la lista.</p>
+    <p>Si querés que borremos tu email de la lista, escribinos a través de la <a href={CONTACT_URL}>página de contacto</a>.</p>
 
     <h2>Menores</h2>
     <p>Tramato no está dirigida a menores de 13 años y no recopila datos de nadie: todo queda en el dispositivo de quien la usa.</p>

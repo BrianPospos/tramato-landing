@@ -4,17 +4,17 @@ export const CONTACT_URL = "https://github.com/BrianPospos/tramato-landing/issue
 
 export function Nav({ home = false }: { home?: boolean }) {
   return (
-    <nav className="nav">
+    <nav className="nav" aria-label="Principal">
       <div className="wrap">
         <Link className="logo" href="/" aria-label="Tramato, inicio">
-          <img src="/assets/tramato-lockup-on-dark.svg" alt="Tramato" />
+          <img src="/assets/tramato-lockup-on-dark.svg" alt="Tramato" width={120} height={28} />
         </Link>
         <div className="links">
           {home ? (
             <>
               <a className="hide-sm" href="#funciones">Funciones</a>
-              <a className="hide-sm" href="#privacidad">Privacidad</a>
-              <Link href="/privacidad">Política de privacidad</Link>
+              <a className="hide-sm" href="#preguntas">Preguntas</a>
+              <a className="btn btn-primary btn-sm" href="#lista">Lista de espera</a>
             </>
           ) : (
             <Link href="/">Inicio</Link>
@@ -30,8 +30,9 @@ export function Footer() {
     <footer>
       <div className="wrap">
         <span>© 2026 Tramato</span>
-        <span>
-          <Link href="/privacidad">Política de privacidad</Link> · <a href={CONTACT_URL}>Contacto</a>
+        <span className="footer-links">
+          <Link href="/privacidad">Privacidad</Link>
+          <a href={CONTACT_URL}>Contacto</a>
         </span>
       </div>
     </footer>
