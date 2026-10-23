@@ -25,6 +25,7 @@ function Showcase({
   lead,
   points,
   shot,
+  extra,
   reverse = false,
 }: {
   id?: string;
@@ -33,6 +34,7 @@ function Showcase({
   lead: ReactNode;
   points: string[];
   shot: { src: string; alt: string };
+  extra?: ReactNode;
   reverse?: boolean;
 }) {
   return (
@@ -47,10 +49,35 @@ function Showcase({
               <li key={point}>{point}</li>
             ))}
           </ul>
+          {extra}
         </div>
         <Phone {...shot} />
       </div>
     </section>
+  );
+}
+
+const assistants = [
+  { name: "ChatGPT", logo: "/assets/ai/chatgpt.svg" },
+  { name: "Claude", logo: "/assets/ai/claude.svg" },
+  { name: "Gemini", logo: "/assets/ai/gemini.svg" },
+  { name: "Grok", logo: "/assets/ai/grok.svg" },
+];
+
+function AssistantPicker() {
+  return (
+    <div className="assistants">
+      <p className="assistants-label" id="assistants-label">Pegalo en tu IA de preferencia</p>
+      <ul className="assistants-list" aria-labelledby="assistants-label">
+        {assistants.map(({ name, logo }) => (
+          <li className="assistant" key={name}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logo} alt="" width={20} height={20} />
+            <span>{name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -160,8 +187,9 @@ export function AiSection() {
     <Showcase
       id="ia"
       kicker="Inteligencia artificial"
-      title="“Copiar para IA”: tu carrera, lista para ChatGPT o Claude"
+      title="“Copiar para IA”: tu carrera, lista para tu IA de preferencia"
       lead="Con un toque, Tramato arma un resumen de tu carrera y de tus últimas semanas, listo para pegar en el asistente que uses."
+      extra={<AssistantPicker />}
       points={[
         "Plantillas para analizar una carrera o armar el plan de la semana",
         "El resumen no incluye coordenadas GPS",
