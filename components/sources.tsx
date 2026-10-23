@@ -10,7 +10,7 @@ export function Sources() {
         <h2 className="section-title" id="fuentes-title">Funciona con lo que ya usás</h2>
         <p className="section-lead">
           No importa con qué registraste cada carrera: Tramato las lee desde la app de salud de tu teléfono y las junta en
-          un solo historial.
+          un solo historial. Y si no usás ninguna, Tramato graba con el teléfono.
         </p>
 
         <div className="platforms">
