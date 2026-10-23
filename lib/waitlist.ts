@@ -39,14 +39,16 @@ export type SaveResult = "created" | "duplicate" | "unavailable" | "failed";
 
 /**
  * Guarda el registro en la tabla `waitlist` de Supabase usando su API REST (PostgREST),
- * sin dependencias extra. La tabla tiene `email` único, así que un duplicado se ignora.
+ * sin dependencias extra. Usa la clave pública (publishable/anon): la tabla solo permite
+ * INSERT por RLS, no se puede leer desde afuera. `email` es único y un duplicado se ignora
+ * sin avisar, así nadie puede averiguar qué emails ya están anotados.
  */
 export async function saveSignup({ email, platform, currentApp }: Signup): Promise<SaveResult> {
-  const baseUrl = (process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL)?.replace(/\/+$/, "");
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/+$/, "");
+  const publicKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (!baseUrl || !serviceKey) {
-    console.error("[waitlist] Faltan SUPABASE_URL y/o SUPABASE_SERVICE_ROLE_KEY. Ver README.");
+  if (!baseUrl || !publicKey) {
+    console.error("[waitlist] Faltan NEXT_PUBLIC_SUPABASE_URL y/o NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY. Ver README.");
     return "unavailable";
   }
 
@@ -54,10 +56,10 @@ export async function saveSignup({ email, platform, currentApp }: Signup): Promi
     const response = await fetch(`${baseUrl}/rest/v1/waitlist?on_conflict=email`, {
       method: "POST",
       headers: {
-        apikey: serviceKey,
-        Authorization: `Bearer ${serviceKey}`,
+        apikey: publicKey,
+        Authorization: `Bearer ${publicKey}`,
         "Content-Type": "application/json",
-        Prefer: "resolution=ignore-duplicates,return=representation",
+        Prefer: "resolution=ignore-duplicates,return=minimal",
       },
       body: JSON.stringify({ email, platform, current_app: currentApp }),
       cache: "no-store",
@@ -69,8 +71,7 @@ export async function saveSignup({ email, platform, currentApp }: Signup): Promi
       return "failed";
     }
 
-    const inserted: unknown = await response.json();
-    return Array.isArray(inserted) && inserted.length === 0 ? "duplicate" : "created";
+    return "created";
   } catch (error) {
     console.error("[waitlist] Error al guardar el registro:", error);
     return "failed";

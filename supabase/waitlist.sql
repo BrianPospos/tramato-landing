@@ -1,5 +1,4 @@
--- Tabla de la lista de espera de Tramato.
--- Ejecutala una vez en Supabase › SQL Editor.
+-- Tabla de la lista de espera de Tramato (ya aplicada en el proyecto Supabase conectado).
 
 create table if not exists public.waitlist (
   id uuid primary key default gen_random_uuid(),
@@ -13,10 +12,16 @@ create table if not exists public.waitlist (
   constraint waitlist_current_app_length check (current_app is null or char_length(current_app) <= 80)
 );
 
--- Sin políticas: la API pública (anon/authenticated) no puede leer ni escribir.
--- Solo la service role key, usada desde el servidor de la landing, accede a la tabla.
+-- RLS: la clave pública solo puede insertar. No puede leer, editar ni borrar registros.
 alter table public.waitlist enable row level security;
-revoke all on public.waitlist from anon, authenticated;
 
--- Para consultar los registros:
+drop policy if exists "waitlist_insert_public" on public.waitlist;
+create policy "waitlist_insert_public" on public.waitlist
+  for insert to anon, authenticated
+  with check (true);
+
+revoke all on public.waitlist from anon, authenticated;
+grant insert on public.waitlist to anon, authenticated;
+
+-- Para consultar los registros (desde el SQL Editor de Supabase):
 --   select created_at, email, platform, current_app from public.waitlist order by created_at desc;

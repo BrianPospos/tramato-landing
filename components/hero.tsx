@@ -8,9 +8,9 @@ export function Hero() {
         <div>
           <span className="eyebrow">Beta en TestFlight · Android en camino</span>
           <h1>
-            Todas tus carreras en un solo lugar.
-            <br />
-            <em>Y explicadas.</em>
+          <span className="h1-line">Todas tus carreras</span>
+          <span className="h1-line">en un solo lugar.</span>
+          <em className="h1-line">Y explicadas.</em>
           </h1>
           <p className="lead">
             Tramato junta lo que corriste con Strava, Apple Watch, Garmin o Nike Run Club —o con el teléfono solo— y te
