@@ -186,16 +186,16 @@ export function AiSection() {
     <Showcase
       id="ia"
       kicker="Inteligencia artificial"
-      title="“Copiar para IA”: tu carrera, lista para tu IA de preferencia"
-      lead="Con un toque, Tramato arma un resumen de tu carrera y de tus últimas semanas, listo para pegar en el asistente que uses."
+      title="“Analizar con IA”: tu carrera, lista para tu IA de preferencia"
+      lead="Con un toque, Tramato arma un resumen de tu carrera y de tus últimas semanas, y lo compartís con el asistente que uses."
       extra={<AssistantPicker />}
       points={[
         "Plantillas para analizar una carrera, armar el plan de la semana o prevenir lesiones",
         "Suma tus últimas 6 semanas, tu perfil, tus notas y cómo te sentiste",
         "El resumen no incluye coordenadas GPS",
-        "Lo pegás vos: Tramato no manda nada por su cuenta",
+        "Lo compartís vos: Tramato no manda nada por su cuenta",
       ]}
-      shot={{ src: "/assets/screen-copy.png", alt: "Pantalla Copiar para IA con plantillas y vista previa del resumen" }}
+      shot={{ src: "/assets/screen-copy.png", alt: "Pantalla Analizar con IA con plantillas y vista previa del resumen" }}
     />
   );
 }
@@ -233,7 +233,7 @@ const extras = [
   {
     icon: Share2,
     title: "Para tus historias",
-    text: "Armá una imagen con distancia, tiempo, ritmo y el dibujo del recorrido: tarjeta, fondo transparente o con el mapa.",
+    text: "Armá una imagen o un video de 15 segundos con tu ruta dibujándose sobre el mapa o el satélite, tus números y tus récords. Podés ocultar dónde empezaste y terminaste.",
   },
   {
     icon: DatabaseBackup,
@@ -246,7 +246,7 @@ const privacyPoints = [
   "Sin cuentas ni inicio de sesión",
   "Sin analítica, rastreo ni publicidad dentro de la app",
   "Todo se calcula en tu teléfono",
-  "“Copiar para IA” nunca incluye coordenadas GPS",
+  "“Analizar con IA” nunca incluye coordenadas GPS",
   "Podés borrar todo desde Ajustes en un toque",
 ];
 

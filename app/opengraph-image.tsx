@@ -47,7 +47,7 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 30, color: "#a1a1a8" }}>
-          <span>Beta en TestFlight · Android en camino</span>
+          <span>Beta abierta en iPhone · Android en camino</span>
           <span style={{ color: "#f4f4f5" }}>tramato.vercel.app</span>
         </div>
       </div>

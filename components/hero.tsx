@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { WaitlistForm } from "@/components/waitlist-form";
+import { BetaCta } from "@/components/beta-cta";
 
 export function Hero() {
   return (
-    <header className="hero" id="lista">
+    <header className="hero" id="beta">
       <div className="wrap">
         <div>
-          <span className="eyebrow">Beta en TestFlight · Android en camino</span>
+          <span className="eyebrow">Beta abierta en iPhone · Android en camino</span>
           <h1>
             Grabá tus carreras, juntá las de todas tus apps.
             <br />
@@ -16,7 +16,7 @@ export function Hero() {
             Salí a correr con Tramato o seguí usando Strava, tu Apple Watch, Garmin o Nike Run Club: todo termina en un
             solo historial, con parciales, mejores marcas, carga y un resumen listo para tu IA.
           </p>
-          <WaitlistForm heading="Sumate a la lista de espera" />
+          <BetaCta />
         </div>
         <div className="phones" aria-hidden="true">
           <Image className="p1" src="/assets/screen-history.png" alt="" width={600} height={1305} priority sizes="(max-width: 900px) 240px, 300px" />

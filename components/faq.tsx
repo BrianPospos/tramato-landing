@@ -17,20 +17,20 @@ const questions: { q: string; a: ReactNode }[] = [
   },
   {
     q: "¿Cómo entro a la beta de iPhone?",
-    a: "Anotate en la lista de espera. La beta corre en TestFlight y te escribimos por email cuando haya lugar.",
+    a: "Tocá “Instalar la beta” desde tu iPhone: se abre TestFlight, la app gratuita de Apple para probar betas, y desde ahí instalás Tramato. Necesitás iOS 17 o posterior.",
   },
   {
     q: "¿Qué hacen con mi email?",
     a: (
       <>
-        Lo usamos solo para avisarte sobre la beta de Tramato. Los detalles están en la{" "}
+        Si te anotás para Android, lo usamos solo para avisarte cuando Tramato esté lista. Los detalles están en la{" "}
         <Link href="/privacidad#lista-de-espera">política de privacidad</Link>.
       </>
     ),
   },
   {
-    q: "¿“Copiar para IA” manda mis datos a alguien?",
-    a: "No. Arma un resumen y lo copia al portapapeles, sin coordenadas GPS. Lo que hagas con ese texto, por ejemplo pegarlo en ChatGPT o Claude, lo decidís vos.",
+    q: "¿“Analizar con IA” manda mis datos a alguien?",
+    a: "No por su cuenta. Arma un resumen sin coordenadas GPS y vos elegís con qué app compartirlo (ChatGPT, Claude, Gemini…) o lo copiás. Lo que hagas con ese texto lo decidís vos.",
   },
 ];
 

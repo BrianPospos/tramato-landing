@@ -8,7 +8,7 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: ["500", "700"], v
 const SITE_URL = "https://tramato.vercel.app";
 const TITLE = "Tramato — Todas tus carreras en un solo lugar, y explicadas";
 const DESCRIPTION =
-  "Tramato junta tus carreras de Strava, Apple Watch, Garmin y más, las explica km a km y graba con el GPS del teléfono. Beta en TestFlight para iPhone, Android en camino. Sumate a la lista de espera.";
+  "Tramato junta tus carreras de Strava, Apple Watch, Garmin y más, las explica km a km y graba con el GPS del teléfono. Beta abierta en TestFlight para iPhone, Android en camino.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

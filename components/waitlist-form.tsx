@@ -5,7 +5,7 @@ import { useActionState, useId } from "react";
 import { useFormStatus } from "react-dom";
 import { CheckCircle2, LoaderCircle } from "lucide-react";
 import { joinWaitlist } from "@/app/actions";
-import { initialWaitlistState } from "@/lib/waitlist-types";
+import { initialWaitlistState, type Platform } from "@/lib/waitlist-types";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -22,7 +22,8 @@ function SubmitButton() {
   );
 }
 
-export function WaitlistForm({ heading, note }: { heading: string; note?: string }) {
+/** Con `platform` fijo no pregunta qué teléfono usa (por ejemplo, la lista de Android). */
+export function WaitlistForm({ heading, note, platform }: { heading: string; note?: string; platform?: Platform }) {
   const uid = useId();
   const [state, formAction] = useActionState(joinWaitlist, initialWaitlistState);
 
@@ -75,6 +76,9 @@ export function WaitlistForm({ heading, note }: { heading: string; note?: string
         )}
       </div>
 
+      {platform ? (
+        <input type="hidden" name="platform" value={platform} />
+      ) : (
       <fieldset className="field" aria-describedby={errors.platform ? platformErrorId : undefined}>
         <legend>¿Qué teléfono usás?</legend>
         <div className="seg">
@@ -93,6 +97,7 @@ export function WaitlistForm({ heading, note }: { heading: string; note?: string
           </p>
         )}
       </fieldset>
+      )}
 
       <div className="field">
         <label htmlFor={appId}>
@@ -130,7 +135,7 @@ export function WaitlistForm({ heading, note }: { heading: string; note?: string
       <SubmitButton />
 
       <p className="waitlist-note">
-        {note ?? "Usamos tu email solo para avisarte sobre la beta."}{" "}
+        {note ?? (platform === "android" ? "Usamos tu email solo para avisarte cuando Tramato llegue a Android." : "Usamos tu email solo para avisarte sobre la beta.")}{" "}
         <Link href="/privacidad#lista-de-espera">Cómo lo usamos</Link>.
       </p>
     </form>
