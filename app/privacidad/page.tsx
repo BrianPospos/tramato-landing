@@ -12,7 +12,7 @@ export default function Privacidad() {
       <Nav />
       <main className="doc">
     <h1>Política de privacidad</h1>
-    <p className="updated">Última actualización: 23 de octubre de 2026</p>
+    <p className="updated">Última actualización: 3 de noviembre de 2026</p>
 
     <div className="summary">
       <p><strong>En resumen:</strong> la app Tramato funciona entera en tu iPhone. No tiene servidores, cuentas, analítica ni publicidad, y no recibimos ningún dato de la app. El único dato que recibimos es tu email, si te anotás en la lista de espera de este sitio.</p>
@@ -53,13 +53,13 @@ export default function Privacidad() {
     <p>Solo cuando vos lo hacés, y solo a donde vos elijas:</p>
     <ul>
       <li><strong>Exportar</strong> a CSV o Excel. Las coordenadas GPS se incluyen solo si activás esa opción.</li>
-      <li><strong>Copiar para IA:</strong> copia al portapapeles un resumen sin coordenadas, lugares ni identificadores. Ese texto se borra del portapapeles a los 10 minutos. Si lo pegás en ChatGPT, Claude u otro servicio, se rige por la política de ese servicio.</li>
-      <li><strong>Compartir una imagen</strong> de la carrera. Los estilos "Tarjeta" y "Transparente" muestran solo la forma del recorrido. El estilo "Con mapa" muestra las calles por donde corriste; la app lo avisa antes de compartir.</li>
+      <li><strong>Analizar con IA:</strong> arma un resumen sin coordenadas, lugares ni identificadores, que compartís con la app que elijas o copiás al portapapeles (ahí se borra a los 10 minutos). Si lo mandás a ChatGPT, Claude, Gemini u otro servicio, se rige por la política de ese servicio.</li>
+      <li><strong>Compartir una imagen o un video</strong> de la carrera. Los estilos "Tarjeta" y "Transparente" muestran solo la forma del recorrido. La imagen "Con mapa" y el video muestran las calles o la vista satelital por donde corriste; la app lo avisa antes de compartir. El video oculta por defecto los primeros y los últimos 100 m del recorrido.</li>
       <li><strong>Copia de seguridad:</strong> un archivo con tus notas, zapatillas, objetivo e importaciones que guardás donde quieras.</li>
     </ul>
 
     <h2>Servicios de Apple</h2>
-    <p>Para mostrar mapas, la app usa Apple Maps (MapKit). Al ver el mapa de una carrera o crear la imagen "Con mapa", el iPhone pide a Apple las imágenes de esa zona. Apple trata esos pedidos según su <a href="https://www.apple.com/legal/privacy/">política de privacidad</a>. La voz de los avisos se genera en el iPhone. Si instalás la beta desde TestFlight, Apple puede compartirnos los reportes de errores y los comentarios que envíes desde TestFlight.</p>
+    <p>Para mostrar mapas, la app usa Apple Maps (MapKit). Al ver el mapa de una carrera o crear la imagen "Con mapa" o el video, el iPhone pide a Apple las imágenes de esa zona. Apple trata esos pedidos según su <a href="https://www.apple.com/legal/privacy/">política de privacidad</a>. La voz de los avisos se genera en el iPhone. Si instalás la beta desde TestFlight, Apple puede compartirnos los reportes de errores y los comentarios que envíes desde TestFlight.</p>
 
     <h2>Lo que controlás vos</h2>
     <ul>
@@ -70,7 +70,7 @@ export default function Privacidad() {
     </ul>
 
     <h2 id="lista-de-espera">Lista de espera (este sitio)</h2>
-    <p>Si te sumás a la lista de espera de este sitio, guardamos los datos que cargás en el formulario: tu <strong>email</strong>, si usás <strong>iPhone o Android</strong> y, si querés contarlo, <strong>con qué app registrás hoy tus carreras</strong>. También guardamos la fecha en que te anotaste.</p>
+    <p>La beta de iPhone es abierta: se instala desde el enlace de TestFlight y no hace falta anotarse. La lista de espera es para Android. Si te sumás, guardamos los datos que cargás en el formulario: tu <strong>email</strong>, si usás <strong>iPhone o Android</strong> y, si querés contarlo, <strong>con qué app registrás hoy tus carreras</strong>. También guardamos la fecha en que te anotaste.</p>
     <p>Los usamos solo para avisarte sobre la beta de Tramato y sobre la llegada de la versión de Android. No los vendemos, no los usamos para publicidad y no los compartimos con terceros, salvo con el proveedor que aloja la base de datos del sitio. Esto es independiente de la app: la app no envía datos a la lista.</p>
     <p>Si querés que borremos tu email de la lista, escribinos a través de la <a href={CONTACT_URL}>página de contacto</a>.</p>
 

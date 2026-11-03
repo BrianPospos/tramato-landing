@@ -14,7 +14,7 @@ export function Nav({ home = false }: { home?: boolean }) {
             <>
               <a className="hide-sm" href="#funciones">Funciones</a>
               <a className="hide-sm" href="#preguntas">Preguntas</a>
-              <a className="btn btn-primary btn-sm" href="#lista">Lista de espera</a>
+              <a className="btn btn-primary btn-sm" href="#beta">Probar la beta</a>
             </>
           ) : (
             <Link href="/">Inicio</Link>
